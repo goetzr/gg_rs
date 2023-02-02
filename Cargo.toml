@@ -1,5 +1,5 @@
 [package]
-name = "parse_x86"
+name = "gg_rs"
 version = "0.1.0"
 edition = "2021"
 authors = ["Russ Goetz <russgoetz@gmail.com>"]
