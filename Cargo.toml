@@ -11,3 +11,4 @@ description = "Parses x86 code."
 anyhow = "1.0.68"
 clap = { version = "4.1.4", features = ["derive"] }
 goblin = "0.6.0"
+iced-x86 = "1.18.0"
