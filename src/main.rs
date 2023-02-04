@@ -88,6 +88,10 @@ fn analyze(entry: u64, code: &[u8]) {
         //     instruction = decoder.decode();
         decoder.decode_out(&mut insn);
 
-        println!("{:?}", insn.mnemonic());
+        //println!("{:x}: {:?}", insn.ip(), insn.mnemonic());
+        if insn.ip() == 0x920 {
+            // SAR instruction
+            println!("{:?}", insn.mnemonic());
+        }
     }
 }
