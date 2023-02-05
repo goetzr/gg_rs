@@ -6,6 +6,11 @@ use std::path::PathBuf;
 use clap::Parser;
 use iced_x86::{Decoder, DecoderOptions, Instruction};
 
+mod error;
+mod cfg;
+
+use error::{Error, Result};
+
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
@@ -29,19 +34,6 @@ fn try_main() -> anyhow::Result<()> {
         goblin::Object::PE(pe) => pe,
         _ => return Err(anyhow::Error::msg("ERROR: not a valid PE file".to_string())),
     };
-
-    // pe.sections
-    //     .iter()
-    //     .filter(|s| s.characteristics & IMAGE_SCN_CNT_CODE != 0)
-    //     .for_each(|s| {
-    //         let section_name = unsafe {
-    //             let name_bytes: Vec<_> = s.name.iter().copied().collect();
-    //             String::from_utf8_unchecked(name_bytes)
-    //         };
-    //         println!("Section name = {}", section_name);
-    //         println!("Code size = {}", s.size_of_raw_data);
-    //     });
-    // std::process::exit(0);
 
     let code_section = pe
         .sections
